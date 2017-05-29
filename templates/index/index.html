@@ -25,13 +25,13 @@
         .gua-header h2 {
             font-size: 18px;
         }
-        .gua-tab {
+        .class-tab {
             margin-top: 30px;
         }
-        .gua-tab a {
+        .class-tab a {
             margin: 10px;
         }
-        .gua-block {
+        .class-block {
             height: 3px;
             width: 45px;
             position: relative;
@@ -82,108 +82,33 @@
     <script>
         // setup
         var setup = function() {
-            // tab click
-            $('.gua-tab > a').on('click', function () {
-                var self = $(this);
-                $('.active').removeClass('active');
-                self.addClass('active');
-            });
-
-            // tab action
-            var tabAction = function (position, showLogin) {
-                $(".gua-block").animate({
-                    "left": position
-                }, "fast");
-                $('#id-div-login').toggle(showLogin);
-                $('#id-div-signup').toggle(!showLogin);
-            };
-
-            $('#id-a-signup').on('click', function() {
-                var position = '100px';
-                var showLogin = false;
-                tabAction(position, showLogin);
-            });
-            $('#id-a-login').on('click', function() {
-                var position = '155px';
-                var showLogin = true;
-                tabAction(position, showLogin);
-            });
-        };
-
-        var loginForm = function () {
-            var keys = [
-                'username',
-                'password',
-            ];
-            var loginPrefix = 'id-input-login-';
-            var form = formFromKeys(keys, loginPrefix);
-            return form;
-        };
-
-        var registerForm = function() {
-            var keys = [
-                'username',
-                'signature',
-                'password',
-                'email',
-                'qq',
-                'captcha',
-            ];
-            var registerPrefix = 'id-input-';
-            var form = formFromKeys(keys, registerPrefix);
-            return form;
-        };
-
-        // actions
-        var register = function(){
-            var form = registerForm();
-            var success = function (r) {
-                log('reg, ', r);
-                if(r.success) {
-                    log(r.next);
-                    window.location.href = r.next;
-                } else {
-                    alert(r.message);
-                }
-            };
-            var error = function (err) {
-                log('reg, ', err);
-            };
-            vip.register(form, success, error);
-        };
-
-        var login = function(){
-            var form = loginForm();
-            var success = function (r) {
-                log('login, ', r);
-                if(r.success) {
-                    log(r.next);
-                    window.location.href = r.next;
-                } else {
-                    alert(r.message);
-                }
-            };
-            var error = function (err) {
-                log('login, ', err);
-                alert(err);
-            };
-            vip.login(form, success, error);
-        };
-
-        var bindActions = function() {
-            $('#id-button-register').on('click', function(){
-                register();
-            });
-
-            $('#id-button-login').on('click', function(){
-                login();
-            });
-        };
+            $('.class-tab > a').on('click', function() {
+                var self = $(this)
+                $('.active').removeClass('active')
+                self.addClass('active')
+            })
+            var tabAction = function(position, result) {
+                $('.class-block').animate({
+                    'left': position,
+                }, 'fast')
+                console.log('debug click',)
+                $('#id-div-login').toggle(result)
+                $('#id-div-signup').toggle(!result)
+            }
+            $('#id-div-login').on('click', function() {
+                var position = '155px'
+                var result = true
+                tabAction(position, result)
+            })
+            $('#id-div-signup').on('click', function() {
+                var position = '100px'
+                var result = false
+                tabAction(position, result)
+            })
+        }
 
         var __main = function() {
             setup();
-            bindActions();
-            // select signup
             $('#id-a-login').click();
         };
 
@@ -199,10 +124,10 @@
                 <h1 class="gua-title">银河帝国</h1>
             </div>
             <div class="gua-form">
-                <div class="gua-tab">
+                <div class="class-tab">
                     <a id="id-a-signup" href="#">注册</a>
                     <a id="id-a-login" href="#">登录</a>
-                    <div class="gua-block"></div>
+                    <div class="class-block"></div>
                 </div>
                 <div id="id-div-signup">
                     <div class="gua-form-textinput">
@@ -230,7 +155,6 @@
                     <button id="id-button-login" class="gua-button-big" type="submit">进入</button>
                 </div>
             </div>
-            <!-- 重置密码 -->
         </div>
     </div>
 </body>
