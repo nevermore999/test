@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>weibo</title>
+        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
+        <style>
+            body{
+                margin: 0;
+            }
+            .header-left {
+                float: left;
+                height: 100%;
+                width: 300px;
+                text-align: center;
+                line-height: 70px;
+            }
+            .header-right {
+                float: left;
+                height: 100%;
+            }
+            .header li {
+                float: left;
+                width: 200px;
+                margin-left: 170px;
+                margin-top: 10px;
+            }
+            .header li a {
+                text-decoration: none;
+                color: black;
+            }
+            .top {
+                width: 100%;
+                height: 100%;
+                background: lightblue;
+            }
+            .header {
+                height: 70px;
+                background: lightgray;
+                position: fixed;
+                width: 100%;
+                z-index: 100;
+            }
+            .main {
+                margin-top: 90px;
+                width: 45%;
+                margin: 0 auto;
+            }
+            .main-content {
+                padding-top: 100px;
+                background: #fff;
+                min-height: 600px;
+            }
+            .main-title {
+                margin-left: 10%;
+            }
+            .text {
+                width: 80%;
+                height: 60px;
+                outline: none;
+                margin-top: 20px;
+                margin-left: 10%;
+            }
+            .main-sub {
+                position: relative;
+            }
+            .subtext {
+                position: absolute;
+                right: 10%;
+                top: 10px;
+                font-size: 20px;
+                background: #66cc33;
+            }
+            .active {
+                width: 90%;
+                margin-top: 80px;
+                margin-left: 6%;
+                font-size: 18px;
+            }
+            .main-weibo {
+                border-top: 1px solid gray;
+                margin-top: 10px;
+                margin-left: 5%;
+                width: 90%;
+                display: none;
+            }
+            .all-content {
+                position: relative;
+                background: #f0f0f0;
+            }
+            .all-name {
+                font-size: 20px;
+                margin-left: 10px;
+                color: blue;
+            }
+            .all-con {
+                margin-left: 5%;
+            }
+           .all-time {
+               padding-bottom: 5px;
+               margin-left: 10px;
+           }
+            .actived {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="top">
+            <div class="header">
+                <div class="header-left">
+                    <i class='fa fa-turkish-lira'></i>
+                    MilKy Way
+                </div>
+                <div class="header-right">
+                    <ul class="fa-ul">
+                        <li class="fa-li fa fa-check-square"><a href="/weibo">My WeiBo</a></li>
+                        <li class="fa-li fa fa-check-square"><a href="/home">个人主页</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main">
+                <div class="main-content">
+                    <div class="main-title">
+                        来，说说你在做什么，想什么
+                    </div>
+                    <form  action="/weibo/add" method="post">
+                        <textarea class='text' name="content"></textarea>
+                        <div class='main-sub'>
+                            <button class='subtext' type="submit">发布</button>
+                        </div>
+                    </form>
+                    <div class="active">
+                        <button class='all'>全部微博</button>
+                        <button class='my'>我的微博</button>
+                    </div>
+                    <div class="main-weibo all-wb actived">
+            {% for a in allweibos  %}
+                <div>
+                    <div class="all-content">
+                        <p><span class="all-name">{{a.username}}:</span><span class="all-con">{{ a.content }}</span></p>
+                        <p class="all-time">{{a.ct}}</p>
+                    </div>
+            {% for c in a.comments() %}
+                <div class="comment">
+                    {{ c.user().username }}: {{ c.content }}
+                    <a href="/weibo/comment/del?id={{ c.id}}">删除评论</a>
+                </div>
+            {% endfor %}
+            <form action="/weibo/comment" method="post">
+                <input type="hidden" name="weibo_id" value="{{ a.id }}">
+                <input type="text" name="content">
+                <br>
+                <button type="submit">评论</button>
+            </form>
+        </div>
+    {% endfor %}
+                    </div>
+                    <div class="main-weibo my-wb">
+                        {% for w in weibos  %}
+                            <div>
+                                <div class="all-content">
+                                    <p><span class="all-name">{{w.username}}:</span><span class="all-con">{{ w.content }}</span></p>
+                                    <p class="all-time">{{w.ct}}</p>
+                                </div>
+                                <a href="/weibo/delete?id={{ w.id }}">删除</a>
+                                <a href="/weibo/edit?id={{ w.id }}">修改</a>
+                                {#w.comments() 拿到当前微博下的所有评论#}
+                                {% for c in w.comments() %}
+                                    <div class="comment">
+                                        {{ c.user().username }}: {{ c.content }}
+                                        <a href="/weibo/comment/del?id={{ c.id}}">delete</a>
+                                    </div>
+                                {% endfor %}
+                                <form action="/weibo/comment" method="post">
+                                    <input type="hidden" name="weibo_id" value="{{ w.id }}">
+                                    <input type="text" name="content">
+                                    <br>
+                                    <button type="submit">添加评论</button>
+                                </form>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $('.active').on('click', function (event) {
+                var target = $(event.target)
+                $('.actived').removeClass('actived')
+                if (target.hasClass('all')) {
+                    $('.all-wb').addClass('actived')
+                } else {
+                    $('.my-wb').addClass('actived')
+                }
+            })
+        </script>
+    </body>
+</html>

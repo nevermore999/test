@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "username": "never",
+    "password": "7d309320c97fb5f202a5437a70c039936322628e",
+    "note": ""
+  },
+  {
+    "id": 2,
+    "username": "haha",
+    "password": "7d309320c97fb5f202a5437a70c039936322628e",
+    "note": ""
+  }
+]

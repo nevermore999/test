@@ -1,0 +1,134 @@
+.main {
+    width: 1024px;
+    height: 700px;
+    margin: 50px auto;
+    background-image: url(../2.jpg);
+}
+.main-slider {
+    width: 80%;
+    height: 100px;
+    margin: 0 auto;
+    text-align: center;
+}
+.backmain {
+    position: fixed;
+}
+.player-icon {
+    width: 80%;
+    height: 40px;
+    margin-left: 170px;
+    line-height: 40px;
+    text-align: center;
+}
+.player-icon i {
+    padding-left: 20px;
+    padding-top: 8px;
+    width: 80px;
+    cursor: pointer;
+}
+.player-mode {
+    margin-left: 50px;
+    width: 110px;
+    float: left;
+    cursor: pointer;
+}
+.player-mode ul {
+    padding-left: 0;
+}
+.player-list li {
+    display: none;
+    list-style-type: none;
+}
+.player-mode li {
+    list-style-type: none;
+}
+.player-icon-volume {
+    float: right;
+    margin-right: 120px;
+}
+.player-icon-volume input {
+    margin-top: 1px;
+}
+.main-slider input {
+    margin-top: 50px;
+}
+.main-songname {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+.main-songname h2 {
+    display: inline-block;
+    color: red;
+}
+.mute {
+    cursor: pointer;
+}
+.main-song-list {
+    margin-top: 50px;
+    margin-left: 340px;
+    width:250px;
+    height: 130px;
+    text-align: center;
+}
+.main-song-list span {
+    display: inline-block;
+    margin-top: 25px;
+    margin-left: 20px;
+    float: left;
+
+}
+.main-song-list ul {
+    display: inline-block;
+}
+.main-song-list li {
+    margin-top: 15px;
+    list-style-type: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: blue;
+    cursor: pointer;
+}
+.main-slider input[type=range] {
+       -webkit-appearance: none;
+       width: 500px;
+       border-radius: 15px;
+       height: 15px;
+       background: black;
+       cursor: pointer;
+
+   }
+.main-slider input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    background: #ffffff;
+    border-radius: 50%; /*外观设置为圆形*/
+    cursor: pointer;
+
+}
+.main-slider input[type=range]:focus {
+    outline: none;
+}
+.player-icon input[type=range] {
+       -webkit-appearance: none;
+       width: 70px;
+       border-radius: 15px;
+       height: 5px;
+       background: black;
+       cursor: pointer;
+
+   }
+.player-icon input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    background: lightblue;
+    border-radius: 50%; /*外观设置为圆形*/
+    cursor: pointer;
+
+}
+.player-icon input[type=range]:focus {
+    outline: none;
+}

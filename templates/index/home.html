@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="https://cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
+        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+        <title>milkey way</title>
+        <style>
+            * {
+                margin: 0;
+                font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+                letter-spacing: 2.5px;
+                font-size: 25px;
+            }
+            .header {
+                /*width: 100%;*/
+                min-width: 80%;
+                height: 70px;
+                background: lightgray;
+            }
+            .header-left {
+                float: left;
+                height: 100%;
+                width: 300px;
+                text-align: center;
+                line-height: 70px;
+            }
+            .header-right {
+                float: left;
+                height: 100%;
+            }
+            .header li {
+                float: left;
+                margin-left: 170px;
+                margin-top: 20px;
+            }
+            .header li a {
+                text-decoration: none;
+                color: black;
+            }
+            .main {
+                margin-top: 50px;
+            }
+            .slide-container {
+                /*position: absolute;*/
+                weight: 730px;
+                height: 454px;
+                margin: 0px 250px;
+            }
+            .slide-img {
+                position: relative;
+                width: 730px;
+                height: 454px;
+                overflow: hidden;
+            }
+            button {
+                cursor: pointer;
+            }
+            .img-slide {
+                display: none;
+                cursor: pointer;
+                height: 454px;
+                width: 730px;
+                border-radius: 50px;
+            }
+            .img-block {
+                display: block;
+            }
+            .slide-button {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 30px;
+                color: white;
+                background-color: transparent;
+                border: 0px;
+            }
+            .slide-button-display {
+                display: none;
+            }
+            .slide-button-up {
+                left: 0px;
+            }
+            .slide-button-next {
+                right: 0px;
+            }
+            .slide-button-number {
+                position: relative;
+                bottom: 30px;
+                text-align: center;
+            }
+            .slide-button-i {
+                display: inline-block;
+                color: white;
+                border: 0px;
+                background: black;
+                border-radius: 50%;
+                padding: 0px 5px;
+                margin-left: 10px;
+                font-size: 15px;
+            }
+            .slide-button-now {
+                background: red;
+            }
+            ol > li {
+                cursor: pointer;
+            }
+            .footer {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: start;
+            }
+            .footer-flex {
+                width: 300px;
+                height: 200px;
+                background: lightgray;
+                margin-left: 100px;
+                margin-top: 100px;
+                text-align: center;
+                line-height: 200px;
+                border-radius: 10%;
+            }
+            .footer-flex a {
+                font-size: 40px;
+                text-decoration: none;
+                color: black;
+            }
+            .info {
+                height: 70px;
+                background: lightgray;
+                margin-top: 40px;
+            }
+            .info li {
+                float: left;
+                margin-left: 70px;
+                width: 180px;
+                line-height: 70px;
+                font-size: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class="header-left">
+                <i class='fa fa-turkish-lira'></i>
+                MilKy Way
+            </div>
+            <div class="header-right">
+                <ul class="fa-ul">
+                    <li class="fa-li fa fa-check-square"><a href="#todos">todos</a></li>
+                    <li class="fa-li fa fa-check-square"><a href="#weibo">weibo</a></li>
+                    <li class="fa-li fa fa-check-square"><a href="#music">music</a></li>
+                    <li class="fa-li fa fa-square"><a href="#more">more</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main">
+            <div class="slide-container">
+                <div class="slide-img" data-active="0" data-images="3">
+                    <img class="img-slide img-block todo" src="/static/jidi.jpg">
+                    <img class="img-slide music" src="/static/ynhe.jpg">
+                    <img class="img-slide message-board" src="/static/digo.jpg">
+                    <button class="slide-button slide-button-display slide-button-up" type="button"><</button>
+                    <button class="slide-button slide-button-next slide-button-display" type="button">></button>
+                </div>
+                <div class="slide-button-number">
+                    <button class="slide-button-i slide-button-now">1</button>
+                    <button class="slide-button-i">2</button>
+                    <button class="slide-button-i">3</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-flex">
+                <a href="/todo" name='todos'>todos</a>
+            </div>
+            <div class="footer-flex">
+                <a href="/weibo" name='weibo'>weibo</a>
+            </div>
+            <div class="footer-flex">
+                <a href="/music" name='music'>music</a>
+            </div>
+        </div>
+        <div class="info">
+            <ul class="fa-ul">
+                <li class="fa-li fa fa-check-square">help繁星</li>
+                <li class="fa-li fa fa-check-square">join星空</li>
+                <li class="fa-li fa fa-check-square">thaks苍穹</li>
+                <li class="fa-li fa fa-square">concat me</li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            // div animate
+            $(".footer-flex").on("mouseover",function(e){
+                var This=$(this);
+                This.css('width', '350px')
+            })
+            $(".footer-flex").on("mouseout",function(e){
+                var This=$(this);
+                This.css('width', '300px')
+            })
+            //轮播图效果
+            var play =function(offset) {
+                var activeIndex = $('.slide-img').data('active')
+                var numeberOfimgs = $('.slide-img').data('images')
+                var i = (activeIndex + numeberOfimgs + offset) % numeberOfimgs
+                $('.slide-img').data('active', i)
+                $('.img-block').fadeOut()
+                $('.img-block').removeClass('img-block')
+                var active = $($('.img-slide')[i])
+                active.addClass('img-block')
+                active.fadeIn()
+                $('.slide-button-now').removeClass('slide-button-now')
+                var avtiveNumber = $($('.slide-button-i')[i])
+                avtiveNumber.addClass('slide-button-now')
+            }
+            var playNext = function() {
+                play(1)
+            }
+            var playUp = function() {
+                play(-1)
+            }
+            //点击前后按钮图片切换
+            $('.slide-button').on('click', function(event) {
+                var button = $(event.target)
+                if(button.hasClass('slide-button-up')) {
+                    playUp()
+                }else {
+                    playNext()
+                }
+            })
+            //鼠标经过显示切换按钮
+            $('.slide-container').on('mouseenter', function() {
+                $('.slide-button').removeClass('slide-button-display')
+            })
+            //鼠标离开隐藏切换按钮
+            $('.slide-container').on('mouseleave', function() {
+                $('.slide-button').addClass('slide-button-display')
+            })
+            //鼠标点击数字切换图片
+            $('.slide-button-i').on('click', function(event) {
+                var number = $(event.target).html()
+                $('.slide-img').data('active', number - 1)
+                // $('.img-block').fadeOut()
+                $('.img-block').removeClass('img-block')
+                var actives = $($('.img-slide')[number - 1])
+                actives.addClass('img-block')
+                // actives.fadeIn()
+                $('.slide-button-now').removeClass('slide-button-now')
+                var activeNumber = $($('.slide-button-i')[number - 1])
+                activeNumber.addClass('slide-button-now')
+                // preventDefault()
+            })
+            //鼠标经过数字切换图片
+            $('.slide-button-i').on('mouseenter', function(event) {
+                var number = $(event.target).html()
+                var nowNumber = $('.slide-img').data('active')
+                if (number - nowNumber != 1) {
+                    $('.slide-img').data('active', number - 1)
+                    $('.img-block').fadeOut()
+                    $('.img-block').removeClass('img-block')
+                    var actives = $($('.img-slide')[number - 1])
+                    actives.addClass('img-block')
+                    actives.fadeIn()
+                    $('.slide-button-now').removeClass('slide-button-now')
+                    var activeNumber = $($('.slide-button-i')[number - 1])
+                    activeNumber.addClass('slide-button-now')
+                }
+            })
+            $('.todo').on('click', function() {
+                location.href = '../todo/todo.html'
+            })
+            $('.music').on('click', function() {
+                location.href = '../music-player/index.html'
+            })
+            $('.message-board').on('click', function() {
+                location.href = '../message-board/message.html'
+            })
+            setInterval('playNext()', 3000)
+        </script>
+    </body>
+</html>

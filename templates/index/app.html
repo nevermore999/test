@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<meta  content="text/html" charset="utf-8">
+<head>
+    <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+        .active {
+            color: dodgerblue;
+        }
+        .class-container {
+            text-align: center;
+        }
+        .class-main {
+            width: 300px;
+            margin: auto;
+        }
+        .class-header h1 {
+            margin: 50px 0;
+            font-size: 40px;
+            color: dodgerblue;
+        }
+        .class-tab {
+            margin-top: 30px;
+        }
+        .class-tab a {
+            margin: 10px;
+        }
+        .class-block {
+            height: 3px;
+            width: 45px;
+            position: relative;
+            left: 155px;;
+            background-color: dodgerblue;
+        }
+        .class-form-textinput {
+            margin-top: 20px;
+            border-style: solid;
+            border-radius: 3px;
+            border-width: 1px;
+            border-color: lightgray;
+        }
+        .class-input-wrapper {
+            background: #fff;
+        }
+        #id-div-signup {
+            display: none;
+        }
+        .class-input-wrapper + .class-input-wrapper {
+            border-style: solid;
+            border-width: 0px;
+            border-top-width: 1px;
+            border-color: lightgray;
+        }
+        .class-input-wrapper input {
+            width: 90%;
+            height: 35px;
+            margin: 5px;
+            border: none;
+            outline: none;
+        }
+        .class-button-big {
+            width: 100%;
+            height: 35px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: dodgerblue;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        .float-left {
+            float: left;
+        }
+
+        .float-right {
+            float: right;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+            letter-spacing: 2.5px;
+        }
+        .main-head {
+            background: url('/static/bg.jpg');
+            background-size: cover;
+            widows: 100%;
+        }
+        .main-middle {
+            background: url('/static/violine.jpg');
+            background-size: cover;
+            widows: 100%;
+        }
+        .main-foot {
+            height: 400px;
+        }
+        .head-text {
+            z-index: 10;
+            position: relative;
+            color: #fff;
+            font-family: Raleway-Black;
+        }
+        .head-content {
+            font-size: 60px;
+            line-height: 60px;
+            padding-left: 100px;
+            padding-top: 200px;
+            width: 550px;
+        }
+        .head-sec {
+            padding-left: 100px;
+            padding-top: 40px;
+            font-size: 24px;
+            letter-spacing: 1px;
+            line-height: 30px;
+            width: 460px;
+        }
+        .head-peek {
+            font-family: Raleway-Black;
+            font-size: 40px;
+            padding-top: 80px;
+            padding-left: 260px;
+            letter-spacing: 0px;
+            line-height: 50px;
+        }
+        .head-span {
+            color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 85%;
+            z-index: 10;
+            cursor: pointer;
+        }
+        .middle-head {
+            padding-left: 45%;
+            font-size: 30px;
+            padding-top: 80px;
+            line-height: 50px;
+            color: #fff;
+        }
+        .middle-title {
+            padding-left: 40%;
+            font-size: 40px;
+            padding-top: 10px;
+            line-height: 50px;
+            color: #fff;
+        }
+        .col-l {
+            float: left;
+            width: 33%;
+            text-align: center;
+            padding-top: 150px;
+        }
+        .col-m {
+            float: left;
+            width: 33%;
+            text-align: center;
+            padding-top: 150px;
+        }
+        .col-r {
+            float: left;
+            width: 33%;
+            text-align: center;
+            padding-top: 150px;
+        }
+        .cll-l {
+            width: 55%;
+            margin: auto
+        }
+        .cll-m {
+            width: 55%;
+            margin: auto
+        }
+        .cll-r {
+            width: 55%;
+            margin: auto
+        }
+        .col-title {
+            padding-top: 30px;
+            font-size: 25px;
+            color: #fff;
+        }
+        .col-content {
+            padding-top: 20px;
+            font-size: 15px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var templates = function(cls) {
+//            var width = document.documentElement.clientWidth
+            var height = document.documentElement.clientHeight
+            var className = document.querySelector(cls)
+//            className.style.width = width + 'px'
+            className.style.height = height + 'px'
+        }
+        window.onload = function() {
+            templates('.main-head')
+            templates('.main-middle')
+        }
+    </script>
+    <div class="main-head">
+        <div class="head-content head-text font">
+            Let's Make Our World Bigger
+        </div>
+        <div class="head-sec head-text font">Connect to a real and unfiltered world through the eyes of others</div>
+        <div class='head-peek head-text font'>SeeK:to</div>
+        <span class='fa fa-chevron-down fa-4x head-span'></span>
+    </div>
+    <div class="main-middle">
+        <div class="middle-head font">some words</div>
+        <div class="middle-title font">About Milky Way</div>
+        <div class="middle">
+            <div class="col-l">
+                <div class="cll-l">
+                    <img src="/static/mag.png" alt="">
+                    <div class="col-title">A DREAM</div>
+                    <div class="col-content">We are on a mission to make our world bigger</div>
+                </div>
+            </div>
+            <div class="col-m">
+                <div class="cll-m">
+                    <img src="/static/group.png" alt="">
+                    <div class="col-title">WHY</div>
+                    <div class="col-content">Had enough with likes, filters and buzzwords ?<br>Let's connect to the real world that surrounds us all.</div>
+                </div>
+            </div>
+            <div class="col-r">
+                <div class="cll-r">
+                    <img src="/static/icon.png" alt="">
+                    <div class="col-title">JOIN</div>
+                    <div class="col-content">If you are willing to  explore the milky way through your eyes than come join the ride...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-foot">
+        <div class="class-container">
+            <div class="class-main">
+                <div class="class-header">
+                    <h1 class="class-title">银河帝国</h1>
+                </div>
+                <div class="class-form">
+                    <div class="class-tab">
+                        <a id="id-a-signup" href="#">注册</a>
+                        <a id="id-a-login" class='active' href="#">登录</a>
+                        <div class="class-block"></div>
+                    </div>
+                    <div id="id-div-signup">
+                        <form action="/register" method="post">
+                            <div class="class-form-textinput">
+                                <div class="class-input-wrapper">
+                                    <input id="id-input-username" type="text" name='username' placeholder="用户名（不少于 6 位）" required/>
+                                </div>
+                                <div class="class-input-wrapper">
+                                    <input id="id-input-password" type="password" name='password' placeholder="密码（不少于 6 位）" required/>
+                                </div>
+                                <div class="class-input-wrapper">
+                                    <input id="id-input-captcha" type="text" name='validate' placeholder="验证码（输入数字 3）" required/>
+                                </div>
+                            </div>
+                            <button id="id-button-register" class="class-button-big" type='submit'>注册</button>
+                        </form>
+                    </div>
+                    <div id="id-div-login">
+                        <form  action="/login" method="post">
+                            <div class="class-form-textinput">
+                                <div class="class-input-wrapper">
+                                    <input id="id-input-login-username" type="text" name='username' placeholder="用户名" required/>
+                                </div>
+                                <div class="class-input-wrapper">
+                                    <input id="id-input-login-password" type="text" name='password' placeholder="密码" required/>
+                                </div>
+                            </div>
+                            <button id="id-button-login" class="class-button-big" type="submit">进入</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // setup
+        var setup = function() {
+            $('.class-tab > a').on('click', function() {
+                var self = $(this)
+                $('.active').removeClass('active')
+                self.addClass('active')
+                $('html,body').animate({scrollTop: $('body').height()}, 100)
+            })
+            var tabAction = function(position, result) {
+                $('.class-block').animate({
+                    'left': position,
+                }, 'fast')
+                $('#id-div-login').toggle(result)
+                $('#id-div-signup').toggle(!result)
+            }
+            $('#id-a-login').on('click', function() {
+                var position = '155px'
+                var result = true
+                tabAction(position, result)
+                $('body').scrollTop($('body').height())
+            })
+            $('#id-a-signup').on('click', function() {
+                var position = '100px'
+                var result = false
+                tabAction(position, result)
+                $('body').scrollTop($('body').height())
+            })
+        }
+
+        var __main = function() {
+            setup();
+            // $('#id-a-login').click();
+        };
+
+        $(document).ready(function(){
+            __main();
+        });
+    </script>
+    <script>
+        $('.head-span').on('click', function() {
+            $('body,html').animate({scrollTop:$('.main-head').height()}, 1000);
+        })
+    </script>
+</body>
+</html>

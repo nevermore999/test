@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>音乐播放器</title>
+        <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+        <script src="static/js/music.js"></script>
+        <link rel="stylesheet" href="static/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="static/css/music.css">
+    </head>
+    <body>
+        <div class="backmain">
+            <a href="/home">返回主页</a>
+        </div>
+        <div>
+            <audio id="id-audio-player" autoplay="autoplay">
+                <source src="static/media/1.mp3">
+            </audio>
+        </div>
+        <div class="main">
+            <div class="main-slider">
+                <time id="time-currenttime">0:00</time>
+                <input id="time-runnable" type="range" value="0">
+                <time id="time-alltime">3:00</time>
+            </div>
+            <div class="main-songname">
+                <span>正在播放：<h2>当你老了</h2></span>
+            </div>
+            <div class="player-icon">
+                <div class="player-mode player-list">
+                    <span class="player-icon-mode">单曲循环</span>
+                    <ul>
+                        <li class="mode">单曲循环</li>
+                        <li class="mode">列表循环</li>
+                        <li class="mode">随机播放</li>
+                    </ul>
+                </div>
+                <i class='fa fa-step-backward fa-2x' data-action='prev'></i>
+                <i class='fa fa-pause fa-2x' data-action='pause'></i>
+                <i class='fa fa-step-forward fa-2x' data-action='next'></i>
+                <i class="fa fa-volume-up fa-2x mute" data-action='mute'></i>
+                <div class="player-icon-volume">
+                    <input id="id-input-volume" type="range" value="100">
+                </div>
+            </div>
+            <div class="main-song-list">
+                <span>歌曲列表:</span>
+                <ul>
+                    <li class="main-song-name" data-src='static/media/1.mp3'>当你老了</li>
+                    <li class="main-song-name" data-src='static/media/2.mp3'>My soul</li>
+                    <li class="main-song-name" data-src='static/media/3.mp3'>MKAlieZ-a0v</li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
